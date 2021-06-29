@@ -3,6 +3,11 @@
  */
 package BasicLibrary;
 import java.util.ArrayList;
+import java.util.HashSet ;
+import java.util.HashMap ;
+import java.util.Map;
+import java.util.Map.*;
+import java.util.* ;
 
 public class Library {
     public boolean someLibraryMethod() {
@@ -10,14 +15,41 @@ public class Library {
     }
 
     public static void main(String[] args){
-        System.out.println("test");
+//        System.out.println("test");
 //        int[] arr =  roll(5) ;
 //        System.out.println(arr[0]);
-        int[] testArr = {1,2,3,4,1} ;
+//        int[] testArr = {1,2,3,4} ;
 //      System.out.println(containsDuplicates(testArr));
 //        System.out.println(calcAverage(testArr));
-        int[][] testArr2 = {{10,10,10} , {2,2,2}};
-        System.out.println(lowestAvg2DArr(testArr2));
+//        int[][] testArr2 = {{10,10,10} , {2,2,2}};
+//        System.out.println(lowestAvg2DArr(testArr2));
+
+        /*
+        //to test analyzeWeathData function
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+
+        analyzeWeathData(weeklyMonthTemperatures);
+         */
+
+        /*
+        //test tally function
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        System.out.println("the winner is " +  tally(votes));
+         */
     }
 
     public static int[] roll(int n){
@@ -61,5 +93,50 @@ public class Library {
             }
         }
         return  lowestAvg ;
+    }
+
+    //function to print out min , max and doesn't exist element
+    public static void analyzeWeathData(int[][] data){
+        Set<Integer> uniqueTempData = new HashSet<Integer>() ;
+        for(int i = 0 ; i < data.length ; i++){
+            for(Integer temp : data[i]){
+                uniqueTempData.add(temp);
+            }
+        }
+        System.out.println("Low Temperature " + Collections.min(uniqueTempData));
+        System.out.println("High Temperature" + Collections.max(uniqueTempData)) ;
+        for(int i = Collections.min(uniqueTempData) ; i < Collections.max(uniqueTempData) ; i++){
+            if(!uniqueTempData.contains(i)) {
+                System.out.println("Never saw temperature: " + i);
+            }
+        }
+
+    }
+
+    // to check the most repeated element
+    public static String tally(List<String> votes){
+        HashMap<String , Integer> membersVotes = new HashMap<String , Integer>();
+        int votesHolder = 0 ;
+        for(String mebName : votes){
+            if(membersVotes.containsKey(mebName)){
+                votesHolder = membersVotes.get(mebName) + 1;
+                membersVotes.put(mebName , votesHolder);
+            }else{
+                membersVotes.put(mebName , 1);
+            }
+        }
+        System.out.println(membersVotes);
+        int maxVotes = Collections.max(membersVotes.values()) ;
+        String winner = "none";
+        for(Entry<String , Integer> entry : membersVotes.entrySet()){
+            if(entry.getValue()== maxVotes){
+                winner = entry.getKey();
+            }
+        }
+        return  winner ;
+    }
+
+    public static  String test(){
+        return  "passed" ;
     }
 }

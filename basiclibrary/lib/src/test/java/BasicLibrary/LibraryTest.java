@@ -5,10 +5,47 @@ package BasicLibrary;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.DisplayName;
+//import org.junit.jupiter.api.RepeatedTest;
+//import org.junit.jupiter.api.Test;
 
 public class LibraryTest {
+//    @BeforeEach public void setUp() {
+//        Library libraryObj = new Library() ;
+//    }
+    Library libraryObj = new Library() ;
     @Test public void someLibraryMethodReturnsTrue() {
         Library classUnderTest = new Library();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    }
+
+    @Test
+//    @DisplayName("Simple multiplication should work")
+    public void analyzeWeathDataTest(){
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+
+        assertEquals("passed" , libraryObj.test() , "test should work") ;
+    }
+
+    public void tallyTest(){
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        assertEquals("Bush" , libraryObj.tally(votes));
     }
 }
