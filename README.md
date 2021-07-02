@@ -22,5 +22,6 @@
 <br><br>
 
 # Lab-03 second part(linter)
-### fix missing semicolons  Data method
+### fix missing semicolons method : 
+###### in this method the method will detect missing semicolons syntax error and will create a new file with name outpu.js that has the fixed code
 
