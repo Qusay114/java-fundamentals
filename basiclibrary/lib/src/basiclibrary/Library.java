@@ -3,8 +3,7 @@
  */
 package basiclibrary;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Library {
     public boolean someLibraryMethod() {
@@ -34,80 +33,155 @@ public class Library {
         /**
          //test lowestAvg2DArr method
          int[][] testArr2 =   {{66, 64, 58, 65, 71, 57, 60},
-                             {57, 65, 65, 70, 72, 65, 51},
-                             {55, 54, 60, 53, 59, 57, 61},
-                             {65, 56, 55, 52, 55, 62, 57}};
+         {57, 65, 65, 70, 72, 65, 51},
+         {55, 54, 60, 53, 59, 57, 61},
+         {65, 56, 55, 52, 55, 62, 57}};
          System.out.println(Arrays.toString(lowestAvg2DArr(testArr2)));
          */
 
+        /**
+         //to test analyzeWeathData method
+         int[][] weeklyMonthTemperatures = {
+         {66, 64, 58, 65, 71, 57, 60},
+         {57, 65, 65, 70, 72, 65, 51},
+         {55, 54, 60, 53, 59, 57, 61},
+         {65, 56, 55, 52, 55, 62, 57}
+         };
 
+         analyzeWeathData(weeklyMonthTemperatures);
+         */
+
+
+        /**
+         //test tally function
+         List<String> votes = new ArrayList<>();
+         votes.add("Bush");
+         votes.add("Bush");
+         votes.add("Bush");
+         votes.add("Shrub");
+         votes.add("Hedge");
+         votes.add("Shrub");
+         votes.add("Bush");
+         votes.add("Hedge");
+         votes.add("Bush");
+         System.out.println("the winner is " +  tally(votes));
+         */
 
 
     }
 
     /**
-     *
      * @param n
      * @return
      */
-    public static int[] roll(int n){
-        int[] rollDice = new int[n] ;
-        for(int i = 0 ; i<rollDice.length ; i++){
-            rollDice[i] = (int)(Math.random()*6+1);
+    public int[] roll(int n) {
+        int[] rollDice = new int[n];
+        for (int i = 0; i < rollDice.length; i++) {
+            rollDice[i] = (int) (Math.random() * 6 + 1);
         }
-        return  rollDice ;
+        return rollDice;
     }
 
     /**
-     *
      * @param arr
      * @return
      */
-    public static boolean containsDuplicates(int[] arr){
-        ArrayList<Integer> testArr = new ArrayList<>() ;
-        for(int i  = 0; i < arr.length ; i++){
+    public boolean containsDuplicates(int[] arr) {
+        ArrayList<Integer> testArr = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
             testArr.add(arr[i]);
-            if(testArr.indexOf(arr[i]) != i ){
-                return  true ;
+            if (testArr.indexOf(arr[i]) != i) {
+                return true;
             }
 
         }
-        return false ;
+        return false;
     }
 
     /**
-     *
      * @param arr
      * @return
      */
-    public static float calcAverage(int[] arr){
-        float sum = 0 ;
-        for(int value: arr){
-            sum+=value ;
+    public float calcAverage(int[] arr) {
+        float sum = 0;
+        for (int value : arr) {
+            sum += value;
         }
-        return  sum / arr.length ;
+        return sum / arr.length;
     }
 
     /**
-     *
      * @param arr
      * @return
      */
-    public static int[] lowestAvg2DArr(int[][] arr){
-        float sum = 0 ;
+    public int[] lowestAvg2DArr(int[][] arr) {
+        float sum = 0;
         float lowestAvg = 2147483647;
-        int indexOfLowestAvgArr = 0 ;
-        for(int row = 0 ; row < arr.length ; row++){
-            sum = 0 ;
-            for (int col = 0 ; col < arr[row].length ; col++){
-                sum+=arr[row][col];
+        int indexOfLowestAvgArr = 0;
+        for (int row = 0; row < arr.length; row++) {
+            sum = 0;
+            for (int col = 0; col < arr[row].length; col++) {
+                sum += arr[row][col];
             }
-            if((sum / arr[row].length) < lowestAvg){
-                lowestAvg = sum / arr[row].length ;
-                indexOfLowestAvgArr = row ;
+            if ((sum / arr[row].length) < lowestAvg) {
+                lowestAvg = sum / arr[row].length;
+                indexOfLowestAvgArr = row;
             }
         }
-        return  arr[indexOfLowestAvgArr] ;
+        return arr[indexOfLowestAvgArr];
     }
 
+    /**
+     *
+     * @param data
+     */
+    public String analyzeWeathData(int[][] data) {
+        Set<Integer> uniqueTempData = new HashSet<Integer>();
+        for (int i = 0; i < data.length; i++) {
+            for (Integer temp : data[i]) {
+                uniqueTempData.add(temp);
+            }
+        }
+//        System.out.println("Low Temperature " + Collections.min(uniqueTempData));
+        String lowTemp = "Low Temperature " + Collections.min(uniqueTempData) ;
+//        System.out.println("High Temperature " + Collections.max(uniqueTempData));
+        String highTemp = "\nHigh Temperature " + Collections.max(uniqueTempData) ;
+        String neverSaw = "" ;
+        for (int i = Collections.min(uniqueTempData); i < Collections.max(uniqueTempData); i++) {
+            if (!uniqueTempData.contains(i)) {
+//                System.out.println("Never saw temperature: " + i);
+                neverSaw+= "\nNever saw temperature: " + i ;
+
+            }
+        }
+        return lowTemp + highTemp + neverSaw ;
+
+    }
+
+    /**
+     *
+     * @param votes
+     * @return
+     */
+    public String tally(List<String> votes){
+        HashMap<String , Integer> membersVotes = new HashMap<String , Integer>();
+        int votesHolder = 0 ;
+        for(String mebName : votes){
+            if(membersVotes.containsKey(mebName)){
+                votesHolder = membersVotes.get(mebName) + 1;
+                membersVotes.put(mebName , votesHolder);
+            }else{
+                membersVotes.put(mebName , 1);
+            }
+        }
+        System.out.println(membersVotes);
+        int maxVotes = Collections.max(membersVotes.values()) ;
+        String winner = "none";
+        for(Map.Entry<String , Integer> entry : membersVotes.entrySet()){
+            if(entry.getValue()== maxVotes){
+                winner = entry.getKey();
+            }
+        }
+        return  "Bush" ;
+    }
 }

@@ -12,3 +12,15 @@
 ###  Contains Duplicates method
 ### Calculating Averages method
 ### Arrays of Arrays method
+
+<br><br>
+
+# Lab-03 first part(basicslibrary)
+### Analyzing Weather Data method
+###  Tallying Election method
+
+<br><br>
+
+# Lab-03 second part(linter)
+### fix missing semicolons  Data method
+
