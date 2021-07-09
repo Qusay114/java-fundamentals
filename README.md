@@ -26,5 +26,49 @@
 ###### in this method the method will detect missing semicolons syntax error and will create a new file with name outpu.js that has the fixed code
 
 # Lab-06 ([Inheritance](https://github.com/Qusay114/java-fundamentals/tree/main/inheritance/lib/src/main/java))
-### <span style="color:red">Resturant </span> :<br> a class that has resturant name , reviews , stars and price category  , besides methods to set these values and get them
+
+## Review Class :<br>
+a class that has author , stars and reviews  properties, besides these methods :
+* addReview : to add a review
+* getReviews : to get the reviews .
+* getStars : to get the average of the reviews .
+* toString : to get the author and the stars of the review .
+
+## Resturant Class :<br> 
+a class extends Review class and has resturant name  and price category  properties, besides these methods :
+* addPriceCategory : to set the price category for the restaurant .
+* getPriceCategory : to get the price category .
+* getName : to get the name of the restaurant .
+* toString : to get the name , reviews and the price category of the restaurnt .
+
+
+
+# Lab-07 ([Inheritance](https://github.com/Qusay114/java-fundamentals/tree/main/inheritance/lib/src/main/java))
+
+## Review Class :<br>
+a class that has author , stars and reviews  properties, besides these methods :
+* addReview : to add a review
+* getReviews : to get the reviews .
+* getStars : to get the average of the reviews .
+* toString : to get the author and the stars of the review .
+
+## Resturant Class :<br>
+a class extends Review class and has resturant name  and price category  properties, besides these methods :
+* addPriceCategory : to set the price category for the restaurant .
+* getPriceCategory : to get the price category .
+* getName : to get the name of the restaurant .
+* toString : to get the name , reviews and the price category of the restaurnt .
+
+## Shop Class :<br>
+a class extends Review class and has shop name  , description and number of dollar signs properties, which will be set in the constructor besides these methods :
+* getName : to get the name of the shop
+* getDescription : to get the description of the shop .
+* getName : to get the name of the restaurant .
+* toString : to get the name , description , review and dollar sings of the shop .
+
+## Theater Class :<br>
+a class extends Review class and has theater name  and movies list properties, which will be set in the constructor besides these methods :
+* addMovie : to add a movie name to the movies list
+* removeMovie : to remove a movie from the movies list.
+* toString : to get the name of the theater and the names of the movies list that currently showing of theater .
 
