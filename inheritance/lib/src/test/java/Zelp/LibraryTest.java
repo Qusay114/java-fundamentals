@@ -3,17 +3,39 @@
  */
 package Zelp;
 
+import com.google.common.collect.Sets;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
 
+    @Test
+    public void testRestaurant(){
+        Restaurant mac = new Restaurant("mac");
+        HashSet<String> macPrices = Sets.newHashSet("30D" , "40D" , "50D");
+        mac.addPriceCategory(macPrices);
+        assertEquals("mac resturant has 0.0 stars review and price category [30D, 40D, 50D]" , mac.toString());
+    }
+    @Test
+    public void testRestaurantReview(){
+        Restaurant mac = new Restaurant("mac");
+        HashSet<String> macPrices = Sets.newHashSet("30D" , "40D" , "50D");
+        mac.addPriceCategory(macPrices);
+        mac.addReview("Qusay" , 5);
+        mac.addReview("hadi" , 4);
+        mac.addReview("Ali " , 3.445);
+        assertEquals("mac resturant has 4.1483335 stars review and price category [30D, 40D, 50D]" , mac.toString());
+    }
 
     @Test
     void testShop(){
         Shop carrefour = new Shop("Carrefour" , "exists in Amman" , 5);
         assertEquals("Carrefour shop is exists in Amman , and has $$$$$ , 0.0 stars review" , carrefour.toString());
     }
+
     @Test
     void testShopReview(){
         Shop cityMall = new Shop("City Mall" , "exists in Amman" , 5);
